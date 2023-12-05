@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2wgcujw6s3ak"]
+
+[ext_resource type="Script" path="res://ui/HealthBar.gd" id="1_7cxj8"]
+[ext_resource type="Texture2D" uid="uid://eempf835kssb" path="res://art/ui/health_bar/health_bar_100.png" id="1_yhvn4"]
+
+[node name="HealthBar" type="Node"]
+script = ExtResource("1_7cxj8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 129.0
+offset_top = 916.0
+offset_right = 492.0
+offset_bottom = 1011.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_yhvn4")

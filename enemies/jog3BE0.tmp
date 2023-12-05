@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://s8j8qqau4qjc"]
+
+[ext_resource type="Script" path="res://enemies/jogo.gd" id="1_4lxdj"]
+[ext_resource type="Texture2D" uid="uid://cvi8ndofvhdcd" path="res://art/enemies/jogo/cleave_death/jogo_sliced1.png" id="2_1inid"]
+[ext_resource type="Texture2D" uid="uid://pcgx30qyuttx" path="res://art/enemies/jogo/idle/jogo_idle1.png" id="2_r708g"]
+[ext_resource type="Texture2D" uid="uid://for24gnucws3" path="res://art/enemies/jogo/cleave_death/jogo_sliced2.png" id="3_0u0ws"]
+[ext_resource type="Texture2D" uid="uid://dpvs3ucnl5jak" path="res://art/enemies/jogo/idle/jogo_idle2.png" id="3_541xl"]
+[ext_resource type="Texture2D" uid="uid://dkn04jungbppc" path="res://art/enemies/jogo/idle/jogo_idle3.png" id="4_emlhw"]
+[ext_resource type="Texture2D" uid="uid://dyy0pb23iney6" path="res://art/enemies/jogo/cleave_death/jogo_sliced3.png" id="4_vc8sv"]
+[ext_resource type="Texture2D" uid="uid://cvbjrw2lgri0e" path="res://art/enemies/jogo/idle/jogo_idle4.png" id="5_60slq"]
+[ext_resource type="Texture2D" uid="uid://dkys1enxtsjt" path="res://art/enemies/jogo/cleave_death/jogo_sliced4.png" id="5_kbnpq"]
+[ext_resource type="Texture2D" uid="uid://decdlvn50055e" path="res://art/enemies/jogo/cleave_death/jogo_sliced5.png" id="6_p4mrx"]
+[ext_resource type="Texture2D" uid="uid://blxc2nxujs76c" path="res://art/enemies/jogo/cleave_death/jogo_sliced6.png" id="7_br8q5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfv36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1inid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0u0ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vc8sv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kbnpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p4mrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_br8q5")
+}],
+"loop": false,
+"name": &"cleave_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r708g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_541xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_emlhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_60slq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_668lg"]
+size = Vector2(64, 81)
+
+[node name="Jogo" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_4lxdj")
+Speed = 100
+touch_damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hfv36")
+animation = &"cleave_death"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_668lg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -0.5)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_668lg")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

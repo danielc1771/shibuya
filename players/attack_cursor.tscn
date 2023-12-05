@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://23y1x1kkkmwr"]
+
+[ext_resource type="Script" path="res://players/attack_cursor.gd" id="1_ikjd1"]
+[ext_resource type="Script" path="res://players/Marker2D.gd" id="2_3gbxr"]
+[ext_resource type="Texture2D" uid="uid://3amnarkr6d43" path="res://art/ui/attack_cursor.png" id="2_lp3mg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o06mb"]
+size = Vector2(33, 36)
+
+[node name="AttackCursor" type="Area2D"]
+script = ExtResource("1_ikjd1")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(19, 15)
+script = ExtResource("2_3gbxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(-4, 0)
+rotation = 1.5708
+texture = ExtResource("2_lp3mg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15.5, 15)
+shape = SubResource("RectangleShape2D_o06mb")

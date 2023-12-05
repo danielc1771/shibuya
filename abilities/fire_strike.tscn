@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ujgy67ipcdl2"]
+
+[ext_resource type="Script" path="res://abilities/fire_strike.gd" id="1_b4pk1"]
+[ext_resource type="Script" path="res://abilities/Marker2D.gd" id="1_cfu5b"]
+[ext_resource type="Texture2D" uid="uid://c8fr2elypwcli" path="res://art/abilities/fire_strike_charge.png" id="1_mnhl5"]
+[ext_resource type="Texture2D" uid="uid://dvy55m3q8ygyq" path="res://art/abilities/fire_strike_active/fire_strike_active1.png" id="3_400jm"]
+[ext_resource type="Texture2D" uid="uid://dra2typkvljga" path="res://art/abilities/fire_strike_active/fire_strike_active2.png" id="4_w6hwo"]
+[ext_resource type="Texture2D" uid="uid://b0adi2p55vp11" path="res://art/abilities/fire_strike_active/fire_strike_active3.png" id="5_h3af7"]
+[ext_resource type="Texture2D" uid="uid://yuqaln806ldj" path="res://art/abilities/fire_strike_active/fire_strike_active4.png" id="6_mn8vd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6unri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_400jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w6hwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h3af7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mn8vd")
+}],
+"loop": false,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mnhl5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq2op"]
+size = Vector2(400, 142.5)
+
+[node name="FireStrike" type="Area2D"]
+position = Vector2(64, -69)
+script = ExtResource("1_b4pk1")
+metadata/_edit_group_ = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-1, -1)
+script = ExtResource("1_cfu5b")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+position = Vector2(196, 9)
+scale = Vector2(1.63334, 1)
+sprite_frames = SubResource("SpriteFrames_6unri")
+animation = &"active"
+frame_progress = 0.349231
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(196, -11)
+shape = SubResource("RectangleShape2D_jq2op")
+disabled = true
+debug_color = Color(0, 0.619608, 0.564706, 0.419608)
+metadata/_edit_group_ = true
+
+[node name="ChargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TrackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="animation_finished" from="Marker2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="TrackTimer" to="." method="_on_track_timer_timeout"]

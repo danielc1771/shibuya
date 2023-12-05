@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://23y1x1kkkmwr"]
+
+[ext_resource type="Script" path="res://players/attack_cursor.gd" id="1_ikjd1"]
+[ext_resource type="Texture2D" uid="uid://3amnarkr6d43" path="res://art/ui/attack_cursor.png" id="2_lp3mg"]
+
+[node name="AttackCursor" type="Node2D"]
+script = ExtResource("1_ikjd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lp3mg")

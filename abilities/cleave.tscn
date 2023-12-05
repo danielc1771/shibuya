@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds5wdiw5ufi3g"]
+
+[ext_resource type="Script" path="res://abilities/cleave.gd" id="1_48mdi"]
+[ext_resource type="Texture2D" uid="uid://bkdd20e2t51n1" path="res://art/abilities/cleave.png" id="1_htffr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auufs"]
+size = Vector2(24, 25)
+
+[node name="Cleave" type="Area2D"]
+script = ExtResource("1_48mdi")
+DAMAGE = null
+direction = null
+direction_vector = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_auufs")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(1, 0.5)
+texture = ExtResource("1_htffr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

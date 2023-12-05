@@ -1,0 +1,203 @@
+[gd_scene load_steps=38 format=3 uid="uid://bwbqeibgq8e2i"]
+
+[ext_resource type="Script" path="res://players/sukuna.gd" id="1_ld3re"]
+[ext_resource type="Texture2D" uid="uid://dhfcxkyessn6o" path="res://art/players/sukuna/idle/sukuna_idle1.png" id="1_op0mr"]
+[ext_resource type="PackedScene" uid="uid://brsiabxxrycct" path="res://common/HealthComponent.tscn" id="2_0qbrc"]
+[ext_resource type="Texture2D" uid="uid://badamascvstup" path="res://art/players/sukuna/idle/sukuna_idle2.png" id="2_g35cq"]
+[ext_resource type="PackedScene" uid="uid://23y1x1kkkmwr" path="res://players/attack_cursor.tscn" id="2_pjkbt"]
+[ext_resource type="Texture2D" uid="uid://cus203wkhkoqm" path="res://art/players/sukuna/front_idle/sukuna_front_idle1.png" id="2_qx5ik"]
+[ext_resource type="Texture2D" uid="uid://br53d2e70m3as" path="res://art/players/sukuna/back_idle/sukuna_back_idle1.png" id="2_yw7yx"]
+[ext_resource type="PackedScene" uid="uid://ds5wdiw5ufi3g" path="res://abilities/cleave.tscn" id="3_1ohee"]
+[ext_resource type="Texture2D" uid="uid://dap2jmx7l74ev" path="res://art/players/sukuna/back_idle/sukuna_back_idle2.png" id="3_047ue"]
+[ext_resource type="Texture2D" uid="uid://chboi1p8frs21" path="res://art/players/sukuna/idle/sukuna_idle3.png" id="3_qauqr"]
+[ext_resource type="Texture2D" uid="uid://877o3b26dmmr" path="res://art/players/sukuna/front_idle/sukuna_front_idle2.png" id="3_y5gs0"]
+[ext_resource type="Texture2D" uid="uid://dxjwaispeo4ng" path="res://art/players/sukuna/front_idle/sukuna_front_idle3.png" id="4_52jpv"]
+[ext_resource type="Texture2D" uid="uid://cditkbyc0qkqm" path="res://art/players/sukuna/back_idle/sukuna_back_idle3.png" id="4_be2eo"]
+[ext_resource type="Texture2D" uid="uid://bctn1t7tjsmpq" path="res://art/players/sukuna/idle/sukuna_idle4.png" id="4_cidpm"]
+[ext_resource type="Texture2D" uid="uid://b8ktm38ovub5x" path="res://art/players/sukuna/front_idle/sukuna_front_idle4.png" id="5_opjp6"]
+[ext_resource type="Texture2D" uid="uid://cr42qam4c38md" path="res://art/players/sukuna/run/sukuna_run1.png" id="5_soxh7"]
+[ext_resource type="Texture2D" uid="uid://bkxm8getqcffy" path="res://art/players/sukuna/back_run/sukuna_back_run1.png" id="5_t8dko"]
+[ext_resource type="Texture2D" uid="uid://fo1se3vq4cbe" path="res://art/players/sukuna/back_run/sukuna_back_run2.png" id="6_8tblj"]
+[ext_resource type="Texture2D" uid="uid://ceulssvlm7cg" path="res://art/players/sukuna/run/sukuna_run2.png" id="6_cpy3o"]
+[ext_resource type="Texture2D" uid="uid://c5dm5ngko1rpt" path="res://art/players/sukuna/run/sukuna_run3.png" id="7_0bw6b"]
+[ext_resource type="Texture2D" uid="uid://c8mcmke4jp0t1" path="res://art/players/sukuna/back_run/sukuna_back_run3.png" id="7_r8gti"]
+[ext_resource type="Texture2D" uid="uid://c4qnrovs8my0o" path="res://art/players/sukuna/back_run/sukuna_back_run4.png" id="8_80wri"]
+[ext_resource type="Texture2D" uid="uid://he05s7fcc56i" path="res://art/players/sukuna/run/sukuna_run4.png" id="8_afnht"]
+[ext_resource type="Texture2D" uid="uid://dv05ousj2ehrp" path="res://art/players/sukuna/back_run/sukuna_back_run5.png" id="9_sckkw"]
+[ext_resource type="Texture2D" uid="uid://t2eoln6lsv6y" path="res://art/players/sukuna/back_run/sukuna_back_run6.png" id="10_5sidl"]
+[ext_resource type="Texture2D" uid="uid://431i1vds5iy3" path="res://art/players/sukuna/front_run/sukuna_front_run1.png" id="15_lcn6d"]
+[ext_resource type="Texture2D" uid="uid://drblx8pgsfnfo" path="res://art/players/sukuna/front_run/sukuna_front_run2.png" id="16_ses06"]
+[ext_resource type="Texture2D" uid="uid://du33bsqrkhd6y" path="res://art/players/sukuna/front_run/sukuna_front_run3.png" id="17_abrt8"]
+[ext_resource type="Texture2D" uid="uid://hofxn21j8rtq" path="res://art/players/sukuna/front_run/sukuna_front_run4.png" id="18_r8mlk"]
+[ext_resource type="Texture2D" uid="uid://dvc1vwbdreqhx" path="res://art/players/sukuna/front_run/sukuna_front_run5.png" id="19_2n80e"]
+[ext_resource type="Texture2D" uid="uid://b4jylyxy0equa" path="res://art/players/sukuna/hurt/sukuna_hurt1.png" id="23_5qus4"]
+[ext_resource type="Texture2D" uid="uid://crqdu0gukxutp" path="res://art/players/sukuna/hurt/sukuna_hurt2.png" id="24_bmuki"]
+[ext_resource type="Texture2D" uid="uid://ca0jd18g4d1ax" path="res://art/players/sukuna/hurt/sukuna_hurt3.png" id="25_rckov"]
+[ext_resource type="Texture2D" uid="uid://djmo1p6kpqdme" path="res://art/players/sukuna/hurt/sukuna_hurt4.png" id="26_3ysxw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adpv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yw7yx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_047ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_be2eo")
+}],
+"loop": true,
+"name": &"back_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t8dko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8tblj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r8gti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_80wri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sckkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5sidl")
+}],
+"loop": false,
+"name": &"back_run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qx5ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y5gs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_52jpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_opjp6")
+}],
+"loop": true,
+"name": &"front_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_lcn6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ses06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_abrt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_r8mlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2n80e")
+}],
+"loop": false,
+"name": &"front_run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_5qus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bmuki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rckov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_3ysxw")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_op0mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g35cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qauqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cidpm")
+}],
+"loop": true,
+"name": &"side_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_soxh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpy3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0bw6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_afnht")
+}],
+"loop": false,
+"name": &"side_run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1aue"]
+size = Vector2(34, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy6l7"]
+size = Vector2(70, 80)
+
+[node name="Sukuna" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_ld3re")
+attack_cursor = ExtResource("2_pjkbt")
+ability_1 = ExtResource("3_1ohee")
+health_component = NodePath("HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_0qbrc")]
+health = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_adpv0")
+animation = &"side_run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 10)
+shape = SubResource("RectangleShape2D_u1aue")
+one_way_collision = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-5, -8.9407e-07)
+shape = SubResource("RectangleShape2D_cy6l7")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="received_damage" from="HealthComponent" to="." method="_on_health_component_received_damage"]
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
