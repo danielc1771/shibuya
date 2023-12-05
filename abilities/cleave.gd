@@ -1,12 +1,12 @@
-class_name Cleave extends Ability
+class_name Cleave extends "res://common/Hitbox.gd"
 
-@export var DAMAGE = 10
 @export var direction: String
 @export var direction_vector: Vector2
 var SPEED = 550
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
+	collision_mask = 2
 	rotate(get_angle_to(get_viewport().get_mouse_position()) + PI)
 
 func _process(delta):
@@ -15,5 +15,6 @@ func _process(delta):
 	
 	position += direction_vector * SPEED * delta * -1
 
-func _on_body_entered(body):
+
+func _on_area_entered(area):
 	queue_free()

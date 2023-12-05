@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://doyu8hh4pr5ol"]
+[gd_scene load_steps=19 format=3 uid="uid://doyu8hh4pr5ol"]
 
 [ext_resource type="Script" path="res://enemies/BlueTrans.gd" id="1_mh0ky"]
 [ext_resource type="Texture2D" uid="uid://cck5cvyeyptj7" path="res://art/enemies/blue_trans/walk/blue_trans_walk1.png" id="2_wrt2u"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://d4ycwsey3i2" path="res://art/enemies/blue_trans/sliced/blue_trans_sliced3.png" id="10_ie4io"]
 [ext_resource type="Texture2D" uid="uid://dtsambgjq7d27" path="res://art/enemies/blue_trans/sliced/blue_trans_sliced4.png" id="11_2p7xr"]
 [ext_resource type="Texture2D" uid="uid://ds5uuidg2rp2g" path="res://art/enemies/blue_trans/sliced/blue_trans_sliced5.png" id="12_3du3e"]
+[ext_resource type="Script" path="res://enemies/EnemyHurtbox.gd" id="14_jc5my"]
+[ext_resource type="Script" path="res://enemies/EnemyHitbox.gd" id="14_nefl1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5f62e"]
 animations = [{
@@ -82,8 +84,14 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_668lg"]
-size = Vector2(95.9029, 64.9827)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp3bl"]
+size = Vector2(113.75, 81.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h23sn"]
+size = Vector2(113.75, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5o0i"]
+size = Vector2(111.25, 81.25)
 
 [node name="BlueTrans" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -94,21 +102,26 @@ touch_damage = 20
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -6.25)
 sprite_frames = SubResource("SpriteFrames_5f62e")
-animation = &"sliced"
-frame = 4
-frame_progress = 1.0
-
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-3.75, 11.25)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_668lg")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 11.25)
-scale = Vector2(0.899999, 0.899999)
-shape = SubResource("RectangleShape2D_668lg")
+position = Vector2(6.875, -6.875)
+shape = SubResource("RectangleShape2D_bp3bl")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+script = ExtResource("14_nefl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(6.875, -6.25)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_h23sn")
+
+[node name="EnemyHurtbox" type="Area2D" parent="."]
+script = ExtResource("14_jc5my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
+position = Vector2(6.87499, -6.875)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_q5o0i")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

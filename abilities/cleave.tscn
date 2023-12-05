@@ -8,9 +8,7 @@ size = Vector2(24, 25)
 
 [node name="Cleave" type="Area2D"]
 script = ExtResource("1_48mdi")
-DAMAGE = null
-direction = null
-direction_vector = null
+damage = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)

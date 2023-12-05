@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bwbqeibgq8e2i"]
+[gd_scene load_steps=39 format=3 uid="uid://bwbqeibgq8e2i"]
 
 [ext_resource type="Script" path="res://players/sukuna.gd" id="1_ld3re"]
 [ext_resource type="Texture2D" uid="uid://dhfcxkyessn6o" path="res://art/players/sukuna/idle/sukuna_idle1.png" id="1_op0mr"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://crqdu0gukxutp" path="res://art/players/sukuna/hurt/sukuna_hurt2.png" id="24_bmuki"]
 [ext_resource type="Texture2D" uid="uid://ca0jd18g4d1ax" path="res://art/players/sukuna/hurt/sukuna_hurt3.png" id="25_rckov"]
 [ext_resource type="Texture2D" uid="uid://djmo1p6kpqdme" path="res://art/players/sukuna/hurt/sukuna_hurt4.png" id="26_3ysxw"]
+[ext_resource type="Script" path="res://common/Hurtbox.gd" id="35_52om3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_adpv0"]
 animations = [{
@@ -164,10 +165,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1aue"]
-size = Vector2(34, 40)
+size = Vector2(67, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy6l7"]
-size = Vector2(70, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_banss"]
+size = Vector2(65, 80)
 
 [node name="Sukuna" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 scale = Vector2(0.8, 0.8)
@@ -181,23 +182,22 @@ health = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_adpv0")
-animation = &"side_run"
+animation = &"side_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 10)
+position = Vector2(-3.5, -3.57628e-06)
 shape = SubResource("RectangleShape2D_u1aue")
 one_way_collision = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("35_52om3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-5, -8.9407e-07)
-shape = SubResource("RectangleShape2D_cy6l7")
+[node name="CollisionShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-3.75, 0)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_banss")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="received_damage" from="HealthComponent" to="." method="_on_health_component_received_damage"]
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

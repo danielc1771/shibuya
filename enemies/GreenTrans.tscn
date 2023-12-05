@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c86ojeqq3au"]
+[gd_scene load_steps=22 format=3 uid="uid://c86ojeqq3au"]
 
 [ext_resource type="Script" path="res://enemies/GreenTrans.gd" id="1_x1sgd"]
 [ext_resource type="Texture2D" uid="uid://ccdpe3fyattud" path="res://art/enemies/green_trans/walk/green_trans_walk1.png" id="3_g3hvj"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://hkikdgih55dw" path="res://art/enemies/green_trans/sliced/green_trans_sliced6.png" id="13_lkqvw"]
 [ext_resource type="Texture2D" uid="uid://be4j5t6e1xtud" path="res://art/enemies/green_trans/sliced/green_trans_sliced7.png" id="14_ta2kf"]
 [ext_resource type="Texture2D" uid="uid://dfuh5tpa5umyq" path="res://art/enemies/green_trans/sliced/green_trans_sliced8.png" id="15_xmtl7"]
+[ext_resource type="Script" path="res://enemies/EnemyHurtbox.gd" id="17_3xa0q"]
+[ext_resource type="Script" path="res://enemies/EnemyHitbox.gd" id="17_lf28o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k66k3"]
 animations = [{
@@ -94,8 +96,14 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_668lg"]
-size = Vector2(70, 73.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icdus"]
+size = Vector2(60, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_birku"]
+size = Vector2(60, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhxyo"]
+size = Vector2(60, 75)
 
 [node name="GreenTrans" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -107,17 +115,24 @@ touch_damage = 30
 sprite_frames = SubResource("SpriteFrames_k66k3")
 animation = &"sliced"
 
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1.93715e-06, 3.12498)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_668lg")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.54747e-13, 5)
-scale = Vector2(0.899999, 0.899999)
-shape = SubResource("RectangleShape2D_668lg")
+position = Vector2(5.96046e-07, 2.5)
+shape = SubResource("RectangleShape2D_icdus")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+script = ExtResource("17_lf28o")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(-1.78814e-06, 2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_birku")
+
+[node name="EnemyHurtbox" type="Area2D" parent="."]
+script = ExtResource("17_3xa0q")
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="EnemyHurtbox"]
+position = Vector2(-3.57628e-06, 2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_hhxyo")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
